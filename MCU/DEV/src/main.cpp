@@ -2,8 +2,6 @@
 
 #define MAX_UINT8_T 255
 
-#define MIN_DELAY 100
-
 #define N_PLAYERS 8
 
 #define PIN_E1J1 15
@@ -79,8 +77,7 @@ void loop()
 
     if(inputs != 0)
     {
-      Serial.print(inputs);
-      delay(MIN_DELAY);
+      Serial.println(inputs);
     }
 
     if(inputs != 0){hasReset = false;}
