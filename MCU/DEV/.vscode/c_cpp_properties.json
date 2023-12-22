@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/chcay/Documents/UdeS_JDG/GEH_ESP32/include",
-                "C:/Users/chcay/Documents/UdeS_JDG/GEH_ESP32/src",
+                "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/include",
+                "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/src",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -240,8 +240,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_ESP32/include",
-                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_ESP32/src",
+                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/include",
+                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/src",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",

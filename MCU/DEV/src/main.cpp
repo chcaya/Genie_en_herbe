@@ -24,25 +24,24 @@
 uint8_t PIN_PLAYERS[N_PLAYERS] = {PIN_E1J1, PIN_E1J2, PIN_E1J3, PIN_E1J4,
                                   PIN_E2J1, PIN_E2J2, PIN_E2J3, PIN_E2J4};
 
-bool inputs[N_PLAYERS] = {false};
+uint8_t inputs = 0;
 unsigned long lastTime = 0;
 bool hasReset = false;
 
 void ResetInputs()
 {
   hasReset = true;
-
-  for(uint8_t i = 0; i < N_PLAYERS; ++i)
-  {
-    inputs[i] = false;
-  }
+  inputs = 0;
 }
 
 void ReadInputs()
 {
   for(uint8_t i = 0; i < N_PLAYERS; ++i)
   {
-    inputs[i] = !digitalRead(PIN_PLAYERS[i]); // Invert the input state (due to pull-up resistors)
+    if (!digitalRead(PIN_PLAYERS[i])) // Invert the input state (due to pull-up resistors)
+    {
+      inputs |= (1 << i); // Set the ith bit if the input is active
+    }
   }
 }
 
@@ -78,31 +77,12 @@ void loop()
   {
     ReadInputs();
 
-    uint8_t pressedPlayers = 0;
-    uint8_t winner = MAX_UINT8_T;
-
-    for(uint8_t i = 0; i < N_PLAYERS; ++i)
+    if(inputs != 0)
     {
-      if(inputs[i])
-      {
-        ++pressedPlayers;
-        winner = i; // Save the winner index
-      }
-    }
-
-    if(pressedPlayers == 1 && winner != MAX_UINT8_T)
-    {
-      // One winner found, send the winner index to the GUI
-      Serial.print('W');
-      Serial.println(winner);
-      delay(MIN_DELAY);
-    }
-    else if(pressedPlayers > 1)
-    {
-      Serial.println('D');
+      Serial.print(inputs);
       delay(MIN_DELAY);
     }
 
-    if(pressedPlayers > 0){hasReset = false;}
+    if(inputs != 0){hasReset = false;}
   }
 }

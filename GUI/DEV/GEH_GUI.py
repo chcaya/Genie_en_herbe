@@ -66,25 +66,54 @@ def detect_esp32_com_port():
 
 def read_serial_data():
     try:
-        serial_data = ser.readline().decode().strip()
+        # serial_data = ser.readline().decode().strip()
 
-        if serial_data.startswith("W"):
-            # A winner message is received, extract the winner index
-            winner_index = int(serial_data[1:])
-            # Update the score for the winning team (assuming 0 and 1 are the teams in your GUI)
-            if 0 <= winner_index <= 3:
-                player_id = winner_index+1
-                set_player_id(0, player_id)
-            elif 4 <= winner_index <= 7:
-                player_id = winner_index-3
-                set_player_id(1, player_id)
+        # if serial_data.startswith("W"):
+        #     # A winner message is received, extract the winner index
+        #     winner_index = int(serial_data[1:])
+        #     # Update the score for the winning team (assuming 0 and 1 are the teams in your GUI)
+        #     if 0 <= winner_index <= 3:
+        #         player_id = winner_index+1
+        #         set_player_id(0, player_id)
+        #     elif 4 <= winner_index <= 7:
+        #         player_id = winner_index-3
+        #         set_player_id(1, player_id)
             
-        elif serial_data == "D":
-            # Draw message is received, handle the draw scenario in your GUI
-            # For example, display a message indicating the draw
-            draw = "D"
-            set_player_id(0, draw)
-            set_player_id(1, draw)
+        # elif serial_data == "D":
+        #     # Draw message is received, handle the draw scenario in your GUI
+        #     # For example, display a message indicating the draw
+        #     draw = "D"
+        #     set_player_id(0, draw)
+        #     set_player_id(1, draw)
+
+        serial_data = ser.readline().decode()
+
+        if len(serial_data) > 0:
+            input_data = int(serial_data)
+            pressed_players = []
+
+            for i in range(8):  # Assuming 8 bits
+                if input_data & (1 << i):
+                    pressed_players.append(i)
+
+            str_team0 = ""
+            str_team1 = ""
+
+            if len(pressed_players) > 1:
+                str_team0 += "D "
+                str_team1 += "D "
+
+            for i in pressed_players:
+                if 0 <= i <= 3:
+                    player_id = i+1
+                    str_team0 += str(player_id) + " "
+                
+                elif 4 <= i <= 7:
+                    player_id = i-3
+                    str_team1 += str(player_id) + " "
+            
+            set_player_id(0, str_team0)
+            set_player_id(1, str_team1)
 
     except ValueError:
         pass  # Handle invalid data (non-integer values)
