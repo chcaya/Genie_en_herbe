@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import serial
 import serial.tools.list_ports
+import pygame
 
 def set_player_id(team_index, player_id):
     team_player_id[team_index] = player_id
@@ -66,26 +67,6 @@ def detect_esp32_com_port():
 
 def read_serial_data():
     try:
-        # serial_data = ser.readline().decode().strip()
-
-        # if serial_data.startswith("W"):
-        #     # A winner message is received, extract the winner index
-        #     winner_index = int(serial_data[1:])
-        #     # Update the score for the winning team (assuming 0 and 1 are the teams in your GUI)
-        #     if 0 <= winner_index <= 3:
-        #         player_id = winner_index+1
-        #         set_player_id(0, player_id)
-        #     elif 4 <= winner_index <= 7:
-        #         player_id = winner_index-3
-        #         set_player_id(1, player_id)
-            
-        # elif serial_data == "D":
-        #     # Draw message is received, handle the draw scenario in your GUI
-        #     # For example, display a message indicating the draw
-        #     draw = "D"
-        #     set_player_id(0, draw)
-        #     set_player_id(1, draw)
-
         serial_data = ser.readline().decode()
 
         if len(serial_data) > 0:
@@ -112,6 +93,7 @@ def read_serial_data():
                     player_id = i-3
                     str_team1 += str(player_id) + " "
             
+            pygame.mixer.music.play()
             set_player_id(0, str_team0)
             set_player_id(1, str_team1)
 
@@ -143,6 +125,9 @@ ctk.set_default_color_theme("dark-blue")
 
 root = ctk.CTk()
 root.title("GEH")
+
+pygame.mixer.init()
+pygame.mixer.music.load("buzz_sound.wav")
 
 container_frame = ctk.CTkFrame(root)
 container_frame.grid(row=0, column=0, padx=10, pady=10)
