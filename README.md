@@ -2,10 +2,13 @@
 Hardware, Firmware et Software pour la fabrication d'un jeu de génie en herbe
 
 ## Imprimer les fichiers STL dans le dossier /CAD/STL<br />
-8x Handle_V4_Body<br />
+2x Handle_V4_Body_P1<br />
+2x Handle_V4_Body_P2<br />
+2x Handle_V4_Body_P3<br />
+2x Handle_V4_Body_P4<br />
 8x Handle_V4_Cover<br />
-1x ESP32_CASE_V3_BASE<br />
-1x ESP32_CASE_V3_COVER<br />
+1x ESP32_CASE_V4_BASE<br />
+1x ESP32_CASE_V4_COVER<br />
 
 ## Assemblage électrique
 1- Connecter les grounds du ESP32 à 2 connecteurs Wago 5 pos<br />
@@ -16,9 +19,9 @@ Hardware, Firmware et Software pour la fabrication d'un jeu de génie en herbe
 6- Souder les fils rouge et noir sur les boutons<br />
 
 ## Assemblage mécanique
-1- Utiliser les vis M3x16mm et les écrous pour assembler les poignées<br />
+1- Utiliser 2x vis M3x16mm et 2x écrous pour assembler une poignée<br />
 *Attention de faire sortir les fils par le trou central prévu à cet effet avant de visser solidement l'assemblage<br />
-2- Utiliser les vis M3x25mm et les inserts pour assembler le boitier de jeu<br />
+2- Utiliser 4x vis M3x16mm et 4x inserts pour assembler le boitier de jeu<br />
 *Attention de faire sortir les fils par les 8 trous sur les côtés du boitier avant de visser solidement l'assemblage<br />
 
 ## Script code embarqué
