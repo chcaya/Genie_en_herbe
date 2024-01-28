@@ -12,7 +12,7 @@ def reset():
     team_player_id = ["", ""]
     # Send a reset command to the Arduino
     ser.write(b"R\n")  # b"RESET\n" converts the string to bytes
-    print("Reset")
+    #print("Reset")
     update_player_id_display()
 
 def bind_reset_to_enter(event):
@@ -70,7 +70,9 @@ def read_serial_data():
         serial_data = ser.readline().decode()
 
         if len(serial_data) > 0:
+            #print(str(serial_data))
             input_data = int(serial_data)
+            #print(str(input_data))
             pressed_players = []
 
             for i in range(8):  # Assuming 8 bits
@@ -148,7 +150,7 @@ else:
     print("ESP32 detected on:", esp32_com_port)
 
 # Open the serial port for communication with the MCU
-ser = serial.Serial(esp32_com_port, 9600, timeout=1)
+ser = serial.Serial(esp32_com_port, 115200, timeout=1)
 
 reset()
 
