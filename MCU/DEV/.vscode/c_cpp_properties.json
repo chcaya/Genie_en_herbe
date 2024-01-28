@@ -8,8 +8,8 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/include",
-                "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/src",
+                "E:/LaptopMSIBacc/UdeS_JDG/GEH_GIT/MCU/DEV/include",
+                "E:/LaptopMSIBacc/UdeS_JDG/GEH_GIT/MCU/DEV/src",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -240,8 +240,8 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/include",
-                    "C:/Users/chcay/Documents/UdeS_JDG/GEH_GIT/MCU/DEV/src",
+                    "E:/LaptopMSIBacc/UdeS_JDG/GEH_GIT/MCU/DEV/include",
+                    "E:/LaptopMSIBacc/UdeS_JDG/GEH_GIT/MCU/DEV/src",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "C:/Users/chcay/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -471,7 +471,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=60111",
+                "PLATFORMIO=60113",
                 "ARDUINO_fm_devkit",
                 "HAVE_CONFIG_H",
                 "MBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\"",
