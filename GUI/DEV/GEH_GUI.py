@@ -52,27 +52,31 @@ def create_column(container, team_index):
 def combobox_cb(choice):
     print(choice)
 
-def detect_esp32_com_port():
-    esp32_com_port = None
+def detect_mcu_com_port():
+    mcu_com_port = None
 
     # Get a list of available serial ports
     available_ports = list(serial.tools.list_ports.comports())
 
     for port in available_ports:
         if "CP210x" in port.description:
-            esp32_com_port = port.device
+            mcu_com_port = port.device
+            break
+        
+        if "Maple" in port.description:
+            mcu_com_port = port.device
             break
 
-    return esp32_com_port
+    return mcu_com_port
 
 def read_serial_data():
     try:
         serial_data = ser.readline().decode()
 
         if len(serial_data) > 0:
-            #print(str(serial_data))
+            print(str(serial_data))
             input_data = int(serial_data)
-            #print(str(input_data))
+            print(str(input_data))
             pressed_players = []
 
             for i in range(8):  # Assuming 8 bits
@@ -142,15 +146,15 @@ reset_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
 root.bind("<Return>", bind_reset_to_enter)
 
-esp32_com_port = detect_esp32_com_port()
+mcu_com_port = detect_mcu_com_port()
 
-if esp32_com_port is None:
-    print("ESP32 not found.")
+if mcu_com_port is None:
+    print("MCU not found.")
 else:
-    print("ESP32 detected on:", esp32_com_port)
+    print("MCU detected on:", mcu_com_port)
 
 # Open the serial port for communication with the MCU
-ser = serial.Serial(esp32_com_port, 115200, timeout=1)
+ser = serial.Serial(mcu_com_port, 115200, timeout=1)
 
 reset()
 
