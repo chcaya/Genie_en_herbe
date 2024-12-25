@@ -67,6 +67,10 @@ def detect_mcu_com_port():
             mcu_com_port = port.device
             break
 
+        if "Serial" in port.description:
+            mcu_com_port = port.device
+            break
+
     return mcu_com_port
 
 def read_serial_data():
